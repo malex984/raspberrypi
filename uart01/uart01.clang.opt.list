@@ -1,0 +1,121 @@
+
+uart01.clang.opt.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00008000 <_start>:
+    8000:	e3a0d902 	mov	sp, #32768	; 0x8000
+    8004:	eb000005 	bl	8020 <notmain>
+
+00008008 <hang>:
+    8008:	eafffffe 	b	8008 <hang>
+
+0000800c <PUT32>:
+    800c:	e5801000 	str	r1, [r0]
+    8010:	e12fff1e 	bx	lr
+
+00008014 <GET32>:
+    8014:	e5900000 	ldr	r0, [r0]
+    8018:	e12fff1e 	bx	lr
+
+0000801c <dummy>:
+    801c:	e12fff1e 	bx	lr
+
+00008020 <notmain>:
+    8020:	e92d4030 	push	{r4, r5, lr}
+    8024:	e59f010c 	ldr	r0, [pc, #268]	; 8138 <notmain+0x118>
+    8028:	e3a01001 	mov	r1, #1
+    802c:	ebfffff6 	bl	800c <PUT32>
+    8030:	e59f5104 	ldr	r5, [pc, #260]	; 813c <notmain+0x11c>
+    8034:	e3a01000 	mov	r1, #0
+    8038:	e3a04000 	mov	r4, #0
+    803c:	e1a00005 	mov	r0, r5
+    8040:	ebfffff1 	bl	800c <PUT32>
+    8044:	e59f00f4 	ldr	r0, [pc, #244]	; 8140 <notmain+0x120>
+    8048:	e3a01000 	mov	r1, #0
+    804c:	ebffffee 	bl	800c <PUT32>
+    8050:	e59f00ec 	ldr	r0, [pc, #236]	; 8144 <notmain+0x124>
+    8054:	e3a01003 	mov	r1, #3
+    8058:	ebffffeb 	bl	800c <PUT32>
+    805c:	e59f00e4 	ldr	r0, [pc, #228]	; 8148 <notmain+0x128>
+    8060:	e3a01000 	mov	r1, #0
+    8064:	ebffffe8 	bl	800c <PUT32>
+    8068:	e1a00005 	mov	r0, r5
+    806c:	e3a01000 	mov	r1, #0
+    8070:	ebffffe5 	bl	800c <PUT32>
+    8074:	e59f00d0 	ldr	r0, [pc, #208]	; 814c <notmain+0x12c>
+    8078:	e3a010c6 	mov	r1, #198	; 0xc6
+    807c:	ebffffe2 	bl	800c <PUT32>
+    8080:	e59f00c8 	ldr	r0, [pc, #200]	; 8150 <notmain+0x130>
+    8084:	e3a0100e 	mov	r1, #14
+    8088:	e3811c01 	orr	r1, r1, #256	; 0x100
+    808c:	ebffffde 	bl	800c <PUT32>
+    8090:	e59f50bc 	ldr	r5, [pc, #188]	; 8154 <notmain+0x134>
+    8094:	e1a00005 	mov	r0, r5
+    8098:	ebffffdd 	bl	8014 <GET32>
+    809c:	e3c00a07 	bic	r0, r0, #28672	; 0x7000
+    80a0:	e3801a02 	orr	r1, r0, #8192	; 0x2000
+    80a4:	e1a00005 	mov	r0, r5
+    80a8:	ebffffd7 	bl	800c <PUT32>
+    80ac:	e59f00a4 	ldr	r0, [pc, #164]	; 8158 <notmain+0x138>
+    80b0:	e3a01000 	mov	r1, #0
+    80b4:	ebffffd4 	bl	800c <PUT32>
+    80b8:	e1a00004 	mov	r0, r4
+    80bc:	ebffffd6 	bl	801c <dummy>
+    80c0:	e2844001 	add	r4, r4, #1
+    80c4:	e3540096 	cmp	r4, #150	; 0x96
+    80c8:	1afffffa 	bne	80b8 <notmain+0x98>
+    80cc:	e59f0088 	ldr	r0, [pc, #136]	; 815c <notmain+0x13c>
+    80d0:	e3a01901 	mov	r1, #16384	; 0x4000
+    80d4:	ebffffcc 	bl	800c <PUT32>
+    80d8:	e3a04000 	mov	r4, #0
+    80dc:	e1a00004 	mov	r0, r4
+    80e0:	ebffffcd 	bl	801c <dummy>
+    80e4:	e2844001 	add	r4, r4, #1
+    80e8:	e3540096 	cmp	r4, #150	; 0x96
+    80ec:	1afffffa 	bne	80dc <notmain+0xbc>
+    80f0:	e59f0064 	ldr	r0, [pc, #100]	; 815c <notmain+0x13c>
+    80f4:	e3a01000 	mov	r1, #0
+    80f8:	e3a04000 	mov	r4, #0
+    80fc:	ebffffc2 	bl	800c <PUT32>
+    8100:	e59f0038 	ldr	r0, [pc, #56]	; 8140 <notmain+0x120>
+    8104:	e3a01002 	mov	r1, #2
+    8108:	ebffffbf 	bl	800c <PUT32>
+    810c:	ea000004 	b	8124 <notmain+0x104>
+    8110:	e59f004c 	ldr	r0, [pc, #76]	; 8164 <notmain+0x144>
+    8114:	e2041007 	and	r1, r4, #7
+    8118:	e3811030 	orr	r1, r1, #48	; 0x30
+    811c:	ebffffba 	bl	800c <PUT32>
+    8120:	e2844001 	add	r4, r4, #1
+    8124:	e59f0034 	ldr	r0, [pc, #52]	; 8160 <notmain+0x140>
+    8128:	ebffffb9 	bl	8014 <GET32>
+    812c:	e3100020 	tst	r0, #32
+    8130:	0afffffb 	beq	8124 <notmain+0x104>
+    8134:	eafffff5 	b	8110 <notmain+0xf0>
+    8138:	20215004 	eorcs	r5, r1, r4
+    813c:	20215044 	eorcs	r5, r1, r4, asr #32
+    8140:	20215060 	eorcs	r5, r1, r0, rrx
+    8144:	2021504c 	eorcs	r5, r1, ip, asr #32
+    8148:	20215050 	eorcs	r5, r1, r0, asr r0
+    814c:	20215048 	eorcs	r5, r1, r8, asr #32
+    8150:	20215068 	eorcs	r5, r1, r8, rrx
+    8154:	20200004 	eorcs	r0, r0, r4
+    8158:	20200094 	mlacs	r0, r4, r0, r0
+    815c:	20200098 	mlacs	r0, r8, r0, r0
+    8160:	20215054 	eorcs	r5, r1, r4, asr r0
+    8164:	20215040 	eorcs	r5, r1, r0, asr #32
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002141 	andeq	r2, r0, r1, asr #2
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000017 	andeq	r0, r0, r7, lsl r0
+  10:	01080606 	tsteq	r8, r6, lsl #12
+  14:	020a0109 	andeq	r0, sl, #1073741826	; 0x40000002
+  18:	01150114 	tsteq	r5, r4, lsl r1
+  1c:	01180317 	tsteq	r8, r7, lsl r3
+  20:	Address 0x00000020 is out of bounds.
+
